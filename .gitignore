@@ -1,0 +1,13 @@
+# Dataset (Binlerce fotoğrafı GitHub'a yüklemeyiz)
+data/
+
+# Model Weights (Ağır .pth dosyalarını dışarıda bırakıyoruz)
+*.pth
+*.pt
+
+# Python Caches
+__pycache__/
+*.pyc
+
+# IDE Files
+.vscode/
