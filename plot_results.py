@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def generate_plots():
-    # Directory paths
+    
     phase2_dir = os.path.join(os.path.dirname(__file__), '..', 'results', 'phase2_evaluation')
     csv_path = os.path.join(phase2_dir, 'corruption_metrics.csv')
     
@@ -12,10 +12,10 @@ def generate_plots():
         print("Error: corruption_metrics.csv not found! Please run test_corruptions.py first.")
         return
 
-    # Load the metrics data
+    
     df = pd.read_csv(csv_path)
     
-    # Professional academic plot style
+   
     sns.set_theme(style="whitegrid")
     fig, axes = plt.subplots(2, 2, figsize=(15, 12))
     axes = axes.flatten()
@@ -26,7 +26,7 @@ def generate_plots():
     for i, (corr, title) in enumerate(zip(corruptions, titles)):
         subset = df[df['Corruption'] == corr]
         
-        # Draw line plot
+        
         sns.lineplot(
             data=subset, x='Severity', y='Accuracy', hue='Model', 
             style='Model', markers=True, dashes=False, linewidth=2.5, markersize=8, ax=axes[i]
@@ -41,7 +41,7 @@ def generate_plots():
 
     plt.tight_layout()
     
-    # Save the plot
+    
     save_path = os.path.join(phase2_dir, 'performance_plots.png')
     plt.savefig(save_path, dpi=300)
     print(f"Success! Plot generated and saved to: {save_path}")
