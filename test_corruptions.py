@@ -21,6 +21,16 @@ from sklearn.metrics import accuracy_score, f1_score
 from imagecorruptions import corrupt
 from tqdm import tqdm
 from PIL import Image
+import random
+
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+set_seed(42)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 CORRUPTIONS = ['gaussian_noise', 'motion_blur', 'fog', 'brightness']

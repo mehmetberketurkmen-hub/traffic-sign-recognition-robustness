@@ -1,25 +1,26 @@
-# Traffic Sign Recognition under Image Corruption
+# Traffic Sign Recognition Under Image Corruption (Phase 2)
+CENG499 - Senior Design Project
 
-This repository contains the ongoing development of a deep learning-based traffic sign classification system using the **GTSRB (German Traffic Sign Recognition Benchmark)** dataset. 
+## Overview
+This repository contains the Phase 2 implementation of the robustness evaluation for three CNN models (ResNet18, MobileNetV3-Large, ConvNeXt-Tiny) against various image corruptions on the GTSRB dataset.
 
-The primary goal of this project is to evaluate model performance and robustness under various image corruption conditions (e.g., weather, blur, noise), comparing standard vs. lightweight architectures.
+## Phase 2 Updates
+* Implemented clean baseline testing on the original GTSRB dataset (`test_clean.py`).
+* Evaluated models against 4 corruptions (Gaussian Noise, Motion Blur, Fog, Brightness) at 5 severity levels (`test_corruptions.py`).
+* Fixed random seeds (seed=42) to ensure exact reproducibility across model evaluations.
+* Generated performance plots and confusion matrices for deep analysis of model failures (`analyze_mobilenet.py`).
 
-## Current Progress (Phase 1 Completed)
-- [x] Dataset preparation and robust preprocessing pipeline setup.
-- [x] Implemented **Track ID-based dataset splitting** to strictly prevent data leakage.
-- [x] Initial PyTorch training and evaluation workflow established.
-- [x] Baseline model training and validation completed for:
-  - **ResNet-18**
-  - **MobileNetV3-Large** (Lightweight/Edge AI focused)
-  - **ConvNeXt-Tiny** (High-accuracy architecture)
-- [ ] Phase 2: Model evaluation under simulated image corruptions (Gaussian noise, motion blur, fog, brightness) across 5 severity levels.
-- [ ] Phase 3: Robustness improvement via **AugMix** and mixed-corruption training.
+## Requirements
+Run the following command to install dependencies:
+`pip install -r requirements.txt`
 
-## Tech Stack
-- **Framework:** PyTorch, Torchvision
-- **Language:** Python
-- **Evaluation Metrics:** Accuracy, Macro-F1 Score, Confusion Matrices
-- **Hardware:** Local training optimized for NVIDIA RTX 4050 Ti
+## How to Run
 
-## Note on Dataset and Model Weights
-The GTSRB dataset and the trained model checkpoints (`.pth` files) are not included in this repository due to size constraints. To run the experiments, download the dataset directly from the official source and place it in the local `data/` directory.
+1. To test models on clean data:
+`python src/test_clean.py`
+
+2. To evaluate robustness against corruptions:
+`python src/test_corruptions.py`
+
+3. To generate confusion matrices for MobileNetV3:
+`python src/analyze_mobilenet.py`

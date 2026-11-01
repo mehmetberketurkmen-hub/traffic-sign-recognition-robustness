@@ -1,4 +1,10 @@
 torch
 torchvision
-scikit-learn
 numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+imagecorruptions
+tqdm
+Pillow
